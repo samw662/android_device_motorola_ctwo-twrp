@@ -1,0 +1,7 @@
+/vendor_dlkm/lib/modules/goodix_brl_mmi.ko: /vendor_dlkm/lib/modules/touchscreen_mmi.ko /vendor_dlkm/lib/modules/mmi_relay.ko /vendor_dlkm/lib/modules/sensors_class.ko /vendor_dlkm/lib/modules/panel_event_notifier.ko /vendor_dlkm/lib/modules/mmi_info.ko /vendor_dlkm/lib/modules/mmi_annotate.ko
+/vendor_dlkm/lib/modules/touchscreen_mmi.ko: /vendor_dlkm/lib/modules/mmi_relay.ko /vendor_dlkm/lib/modules/sensors_class.ko /vendor_dlkm/lib/modules/panel_event_notifier.ko
+/vendor_dlkm/lib/modules/mmi_relay.ko:
+/vendor_dlkm/lib/modules/sensors_class.ko:
+/vendor_dlkm/lib/modules/panel_event_notifier.ko:
+/vendor_dlkm/lib/modules/mmi_info.ko: /vendor_dlkm/lib/modules/mmi_annotate.ko
+/vendor_dlkm/lib/modules/mmi_annotate.ko:
