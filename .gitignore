@@ -1,0 +1,35 @@
+# build outputs
+/out/
+/target/
+/build/
+/dist/
+
+# firmware and generated images
+/firmware/
+/extracted/
+/proprietary/
+/stock/
+/audit/
+*.img
+*.zip
+
+# device logs and temporary files
+/logs/
+/runtime/
+*.log
+*.tmp
+*.swp
+*~
+.DS_Store
+
+# private device data and signing keys
+*serialno*
+*serial_number*
+*imei*
+*meid*
+*-device-info.txt
+*-properties.txt
+*.key
+*.pem
+*.p12
+*.pfx
