@@ -1,4 +1,5 @@
-AB_OTA_UPDATER := true
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+PRODUCT_BUILD_SUPER_PARTITION := false
 
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.1-impl-qti.ctwo.recovery \
