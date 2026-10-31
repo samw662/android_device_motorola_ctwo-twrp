@@ -182,6 +182,7 @@ static int ufs_query_attr(int fd, __u32 value,
 
 int32_t set_boot_lun(char *sg_dev,uint8_t lun_id)
 {
+    (void)sg_dev;
     int32_t ret;
     __u32 boot_lun_id  = lun_id;
 
