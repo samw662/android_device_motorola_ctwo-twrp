@@ -4,3 +4,11 @@
 /dev/block/bootdevice/by-name/init_boot    /init_boot    emmc    defaults    slotselect
 /dev/block/bootdevice/by-name/dtbo         /dtbo         emmc    defaults    slotselect
 /dev/block/bootdevice/by-name/misc         /misc         emmc    defaults    defaults
+
+# logical partitions
+system        /system        erofs    ro    wait,slotselect,logical
+vendor        /vendor        erofs    ro    wait,slotselect,logical
+product       /product       erofs    ro    wait,slotselect,logical
+system_ext    /system_ext    erofs    ro    wait,slotselect,logical
+system_dlkm   /system_dlkm   erofs    ro    wait,slotselect,logical,display="System DLKM"
+vendor_dlkm   /vendor_dlkm   erofs    ro    wait,slotselect,logical

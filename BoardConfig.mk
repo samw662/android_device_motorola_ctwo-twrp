@@ -28,6 +28,21 @@ BOARD_RAMDISK_USE_LZ4 := true
 BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
 TARGET_NO_KERNEL_OVERRIDE := true
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 134217728
+AB_OTA_UPDATER := true
+AB_OTA_PARTITIONS := \
+    boot \
+    recovery \
+    init_boot \
+    vendor_boot \
+    dtbo \
+    vbmeta \
+    vbmeta_system \
+    system \
+    vendor \
+    product \
+    system_ext \
+    system_dlkm \
+    vendor_dlkm
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_EXCLUDE_MTP := true
 
