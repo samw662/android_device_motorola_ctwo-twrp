@@ -7,23 +7,23 @@
 | model | XT2401-1 |
 | chipset | Snapdragon 8s Gen 3 (SM8635) |
 | GPU | Adreno 735 |
-| memory | 12 GB RAM + up to 12 GB RAM Boost |
-| storage | 512 GB |
+| memory | 12/16 GB RAM |
+| storage | 512/1024 GB |
 | battery | 4,500 mAh |
 | dimensions and weight | 161 × 72.4 × 8.59 mm; 197 g |
 | display | 6.7-inch pOLED, 1220 × 2712, 144 Hz |
 | cameras | rear 50 MP + 50 MP + 64 MP; front 50 MP |
 
-Specifications: [Motorola Brazil](https://www.motorola.com.br/smartphone-motorola-edge-50-ultra/p?idsku=1551).
-
-## kernel source
-
-Local SM8635 source is Linux 6.1.128. The stock kernel is 6.1.145; ABI compatibility is unverified.
-
 ## what's working
-
-Recovery has not been boot-tested. No features are verified.
+Initial builds yet.
+- ADBD
+- Touchscreen (goodix)
 
 ## what's not working
+N/A
 
-Unknown until recovery is tested.
+## How to build?
+- export ALLOW_MISSING_DEPENDENCIES=true
+- source build/envsetup.sh 
+- lunch twrp_ctwo-eng 
+- m recoveryimage -j$(nproc)
