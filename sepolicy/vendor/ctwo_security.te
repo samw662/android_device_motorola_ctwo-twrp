@@ -41,9 +41,6 @@ hal_server_domain(vendor_hal_qseecom_default, hal_qseecom)
 type vendor_hal_qseecom_service, hal_service_type, protected_service, service_manager_type;
 hal_attribute_service(hal_qseecom, vendor_hal_qseecom_service)
 allow vendor_hal_qseecom_default ion_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
-allow vendor_hal_qseecom_default firmware_file:dir { ioctl read getattr lock open watch watch_reads search };
-allow vendor_hal_qseecom_default firmware_file:file { ioctl read getattr lock map open watch watch_reads };
-allow vendor_hal_qseecom_default firmware_file:lnk_file { ioctl read getattr lock map open watch watch_reads };
 allow vendor_hal_qseecom_default tee_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
 allow vendor_hal_qseecom_default vendor_dmabuf_qseecom_heap_device:chr_file { ioctl read getattr lock map open watch watch_reads };
 allow vendor_hal_qseecom_default vendor_dmabuf_qseecom_ta_heap_device:chr_file { ioctl read getattr lock map open watch watch_reads };
