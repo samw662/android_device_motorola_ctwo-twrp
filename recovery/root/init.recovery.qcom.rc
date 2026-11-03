@@ -26,6 +26,8 @@
 #
 
 # load touch modules before recovery starts
+import /init.recovery.security.rc
+
 on init
     insmod /vendor_dlkm/lib/modules/mmi_annotate.ko
     insmod /vendor_dlkm/lib/modules/mmi_info.ko

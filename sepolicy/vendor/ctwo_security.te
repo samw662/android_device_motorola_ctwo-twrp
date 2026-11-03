@@ -1,0 +1,63 @@
+type vendor_hal_keymint_qti, domain;
+type vendor_hal_keymint_qti_exec, exec_type, file_type, vendor_file_type;
+init_daemon_domain(vendor_hal_keymint_qti)
+hal_server_domain(vendor_hal_keymint_qti, hal_keymint)
+get_prop(vendor_hal_keymint_qti, vendor_tee_listener_prop)
+get_prop(vendor_hal_keymint_qti, vendor_disable_spu_prop)
+allow vendor_hal_keymint_qti tee_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow vendor_hal_keymint_qti vendor_dmabuf_qseecom_heap_device:chr_file { ioctl read getattr lock map open watch watch_reads };
+
+type vendor_hal_gatekeeper_qti, domain;
+type vendor_hal_gatekeeper_qti_exec, exec_type, file_type, vendor_file_type;
+init_daemon_domain(vendor_hal_gatekeeper_qti)
+hal_server_domain(vendor_hal_gatekeeper_qti, hal_gatekeeper)
+get_prop(vendor_hal_gatekeeper_qti, vendor_tee_listener_prop)
+get_prop(vendor_hal_gatekeeper_qti, vendor_disable_spu_prop)
+get_prop(vendor_hal_gatekeeper_qti, vendor_spcomlib_prop)
+allow vendor_hal_gatekeeper_qti vendor_spcom_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow vendor_hal_gatekeeper_qti vendor_skp_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow vendor_hal_gatekeeper_qti vendor_spss_utils_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow vendor_hal_gatekeeper_qti vendor_sp_keymaster_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow vendor_hal_gatekeeper_qti vendor_sp_ssr_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow vendor_hal_gatekeeper_qti vendor_dmabuf_qseecom_heap_device:chr_file { ioctl read getattr lock map open watch watch_reads };
+allow vendor_hal_gatekeeper_qti vendor_dmabuf_secure_sp_tz_heap_device:chr_file { ioctl read getattr lock map open watch watch_reads };
+
+type vendor_hal_weaver_default, domain;
+type vendor_hal_weaver_default_exec, exec_type, file_type, vendor_file_type;
+init_daemon_domain(vendor_hal_weaver_default)
+hal_server_domain(vendor_hal_weaver_default, hal_weaver)
+hal_client_domain(vendor_hal_weaver_default, hal_secure_element)
+allow vendor_hal_weaver_default secure_element_service:service_manager find;
+allow vendor_hal_weaver_default secure_element:binder { call transfer };
+allow vendor_hal_weaver_default secure_element:fd use;
+allow vendor_hal_weaver_default self:capability2 wake_alarm;
+set_prop(vendor_hal_weaver_default, vendor_mot_secure_element_prop)
+
+hal_attribute(vendor_hal_qseecom)
+type vendor_hal_qseecom_default, domain;
+type vendor_hal_qseecom_default_exec, exec_type, file_type, vendor_file_type;
+init_daemon_domain(vendor_hal_qseecom_default)
+hal_server_domain(vendor_hal_qseecom_default, vendor_hal_qseecom)
+type vendor_hal_qseecom_service, hal_service_type, protected_service, service_manager_type;
+hal_attribute_service(vendor_hal_qseecom, vendor_hal_qseecom_service)
+allow vendor_hal_qseecom_default ion_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow vendor_hal_qseecom_default firmware_file:dir { ioctl read getattr lock open watch watch_reads search };
+allow vendor_hal_qseecom_default firmware_file:file { ioctl read getattr lock map open watch watch_reads };
+allow vendor_hal_qseecom_default firmware_file:lnk_file { ioctl read getattr lock map open watch watch_reads };
+allow vendor_hal_qseecom_default tee_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
+allow vendor_hal_qseecom_default vendor_dmabuf_qseecom_heap_device:chr_file { ioctl read getattr lock map open watch watch_reads };
+allow vendor_hal_qseecom_default vendor_dmabuf_qseecom_ta_heap_device:chr_file { ioctl read getattr lock map open watch watch_reads };
+
+vendor_restricted_prop(vendor_tee_listener_prop)
+vendor_internal_prop(vendor_disable_spu_prop)
+vendor_internal_prop(vendor_spcomlib_prop)
+vendor_internal_prop(vendor_mot_secure_element_prop)
+
+type vendor_spcom_device, dev_type;
+type vendor_skp_device, dev_type;
+type vendor_spss_utils_device, dev_type;
+type vendor_sp_keymaster_device, dev_type;
+type vendor_sp_ssr_device, dev_type;
+type vendor_dmabuf_qseecom_heap_device, dev_type, dmabuf_heap_device_type;
+type vendor_dmabuf_qseecom_ta_heap_device, dev_type, dmabuf_heap_device_type;
+type vendor_dmabuf_secure_sp_tz_heap_device, dev_type, dmabuf_heap_device_type;

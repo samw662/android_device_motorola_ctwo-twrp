@@ -1,0 +1,35 @@
+service vendor.qseecomd /vendor/bin/qseecomd
+    class core
+    user root
+    group root drmrpc
+    socket notify-topology stream 660 system drmrpc
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/system_ext/lib64:/apex/com.android.i18n/lib64
+    disabled
+
+service qseecom-service /vendor/bin/hw/vendor.qti.hardware.qseecom@1.0-service
+    class hal
+    user system
+    group system drmrpc
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/system_ext/lib64:/apex/com.android.i18n/lib64
+    disabled
+
+service vendor.keymint-qti /vendor/bin/hw/android.hardware.security.keymint-service-qti
+    class hal
+    user system
+    group system drmrpc
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/system_ext/lib64:/apex/com.android.i18n/lib64
+    disabled
+
+service vendor.gatekeeper_default /vendor/bin/hw/android.hardware.gatekeeper-service-qti
+    class hal
+    user system
+    group system
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/system_ext/lib64:/apex/com.android.i18n/lib64
+    disabled
+
+service weaver_hal_service /vendor/bin/hw/android.hardware.weaver-service.thales
+    class hal
+    user vendor_thales_weaver
+    group vendor_thales_weaver
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/system_ext/lib64:/apex/com.android.i18n/lib64
+    disabled
