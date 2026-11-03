@@ -50,3 +50,5 @@ DEVICE_RESOLUTION := 1220x2712
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
+
+BUILD_BROKEN_PLUGIN_VALIDATION := soong-libaosprecovery_defaults soong-libguitwrp_defaults soong-libminuitwrp_defaults soong-vold_defaults
