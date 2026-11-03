@@ -33,13 +33,13 @@ allow vendor_hal_weaver_default secure_element:fd use;
 allow vendor_hal_weaver_default self:capability2 wake_alarm;
 set_prop(vendor_hal_weaver_default, vendor_mot_secure_element_prop)
 
-hal_attribute(vendor_hal_qseecom)
+hal_attribute(qseecom)
 type vendor_hal_qseecom_default, domain;
 type vendor_hal_qseecom_default_exec, exec_type, file_type, vendor_file_type;
 init_daemon_domain(vendor_hal_qseecom_default)
-hal_server_domain(vendor_hal_qseecom_default, vendor_hal_qseecom)
+hal_server_domain(vendor_hal_qseecom_default, hal_qseecom)
 type vendor_hal_qseecom_service, hal_service_type, protected_service, service_manager_type;
-hal_attribute_service(vendor_hal_qseecom, vendor_hal_qseecom_service)
+hal_attribute_service(hal_qseecom, vendor_hal_qseecom_service)
 allow vendor_hal_qseecom_default ion_device:chr_file { ioctl read write getattr lock append map open watch watch_reads };
 allow vendor_hal_qseecom_default firmware_file:dir { ioctl read getattr lock open watch watch_reads search };
 allow vendor_hal_qseecom_default firmware_file:file { ioctl read getattr lock map open watch watch_reads };

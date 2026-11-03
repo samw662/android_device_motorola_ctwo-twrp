@@ -29,7 +29,7 @@ service vendor.gatekeeper_default /vendor/bin/hw/android.hardware.gatekeeper-ser
 
 service weaver_hal_service /vendor/bin/hw/android.hardware.weaver-service.thales
     class hal
-    user vendor_thales_weaver
-    group vendor_thales_weaver
+    user 2916
+    group 2916
     setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib64/hw:/system/lib64:/system_ext/lib64:/apex/com.android.i18n/lib64
     disabled
