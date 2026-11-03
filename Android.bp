@@ -4,7 +4,6 @@ soong_namespace {
 
 cc_binary {
     name: "ctwo_weaver_hidl_bridge",
-    vendor: true,
     srcs: ["weaver-bridge/main.cpp"],
     shared_libs: [
         "android.hardware.weaver-V2-ndk",

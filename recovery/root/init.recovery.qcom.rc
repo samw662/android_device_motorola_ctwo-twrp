@@ -39,7 +39,7 @@ on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
 
-service ctwo_weaver_hidl_bridge /vendor/bin/hw/ctwo_weaver_hidl_bridge
+service ctwo_weaver_hidl_bridge /system/bin/ctwo_weaver_hidl_bridge
     class hal
     user root
     group system

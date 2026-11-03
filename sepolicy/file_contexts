@@ -1,1 +1,1 @@
-/vendor/bin/hw/ctwo_weaver_hidl_bridge u:object_r:ctwo_weaver_bridge_exec:s0
+/system/bin/ctwo_weaver_hidl_bridge u:object_r:ctwo_weaver_bridge_exec:s0
