@@ -1,4 +1,4 @@
-type ctwo_weaver_bridge, domain;
+type ctwo_weaver_bridge, domain, coredomain;
 type ctwo_weaver_bridge_exec, exec_type, file_type, system_file_type;
 
 init_daemon_domain(ctwo_weaver_bridge)
