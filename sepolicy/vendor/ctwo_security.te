@@ -45,6 +45,10 @@ allow vendor_hal_qseecom_default tee_device:chr_file { ioctl read write getattr 
 allow vendor_hal_qseecom_default vendor_dmabuf_qseecom_heap_device:chr_file { ioctl read getattr lock map open watch watch_reads };
 allow vendor_hal_qseecom_default vendor_dmabuf_qseecom_ta_heap_device:chr_file { ioctl read getattr lock map open watch watch_reads };
 
+type vendor_hal_nxpnfc_service, service_manager_type;
+allow hal_nfc_default vendor_hal_nxpnfc_service:service_manager { add find };
+allow nfc vendor_hal_nxpnfc_service:service_manager find;
+
 vendor_restricted_prop(vendor_tee_listener_prop)
 vendor_internal_prop(vendor_disable_spu_prop)
 vendor_internal_prop(vendor_spcomlib_prop)

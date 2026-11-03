@@ -1,9 +1,12 @@
 /vendor/bin/hw/android\.hardware\.security\.keymint-service-qti u:object_r:vendor_hal_keymint_qti_exec:s0
 /vendor/bin/hw/android\.hardware\.gatekeeper-service-qti u:object_r:vendor_hal_gatekeeper_qti_exec:s0
 /vendor/bin/hw/android\.hardware\.weaver-service\.thales u:object_r:vendor_hal_weaver_default_exec:s0
+/vendor/bin/hw/android\.hardware\.secure_element-service\.qti u:object_r:hal_secure_element_default_exec:s0
+/vendor/bin/hw/android\.hardware\.nqnfc-service\.nxp u:object_r:hal_nfc_default_exec:s0
 /vendor/bin/hw/vendor\.qti\.hardware\.qseecom@1\.0-service u:object_r:vendor_hal_qseecom_default_exec:s0
 /vendor/bin/qseecomd u:object_r:tee_exec:s0
 /dev/spcom u:object_r:vendor_spcom_device:s0
+/dev/nq-nci u:object_r:nfc_device:s0
 /dev/sp_kernel u:object_r:vendor_skp_device:s0
 /dev/spss_utils u:object_r:vendor_spss_utils_device:s0
 /dev/sp_keymaster u:object_r:vendor_sp_keymaster_device:s0

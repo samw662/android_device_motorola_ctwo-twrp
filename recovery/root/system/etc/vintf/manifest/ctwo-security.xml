@@ -24,6 +24,26 @@
         <fqname>IGatekeeper/default</fqname>
     </hal>
     <hal format="aidl">
+        <name>android.hardware.nfc</name>
+        <fqname>INfc/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.secure_element</name>
+        <version>1</version>
+        <fqname>ISecureElement/SIM1</fqname>
+        <fqname>ISecureElement/SIM2</fqname>
+        <fqname>ISecureElement/eSE1</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.se.omapi</name>
+        <version>1</version>
+        <fqname>ISecureElementService/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>vendor.nxp.nxpnfc_aidl</name>
+        <fqname>INxpNfc/default</fqname>
+    </hal>
+    <hal format="aidl">
         <name>vendor.qti.hardware.qseecom</name>
         <version>1</version>
         <interface>
