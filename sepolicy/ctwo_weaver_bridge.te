@@ -1,0 +1,6 @@
+type ctwo_weaver_bridge, domain;
+type ctwo_weaver_bridge_exec, exec_type, file_type, vendor_file_type;
+
+init_daemon_domain(ctwo_weaver_bridge)
+hal_server_domain(ctwo_weaver_bridge, hal_weaver)
+hal_client_domain(ctwo_weaver_bridge, hal_weaver)

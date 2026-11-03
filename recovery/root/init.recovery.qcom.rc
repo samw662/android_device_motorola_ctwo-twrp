@@ -38,3 +38,10 @@ on init
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+
+service ctwo_weaver_hidl_bridge /vendor/bin/hw/ctwo_weaver_hidl_bridge
+    class hal
+    user root
+    group system
+    disabled
+    oneshot

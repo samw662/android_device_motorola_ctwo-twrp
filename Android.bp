@@ -1,3 +1,16 @@
 soong_namespace {
     imports: ["hardware/qcom-caf/bootctrl"],
 }
+
+cc_binary {
+    name: "ctwo_weaver_hidl_bridge",
+    vendor: true,
+    srcs: ["weaver-bridge/main.cpp"],
+    shared_libs: [
+        "android.hardware.weaver-V2-ndk",
+        "android.hardware.weaver@1.0",
+        "libbinder_ndk",
+        "libhidlbase",
+        "libutils",
+    ],
+}
