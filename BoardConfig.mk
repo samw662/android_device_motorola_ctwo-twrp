@@ -46,6 +46,12 @@ AB_OTA_PARTITIONS := \
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_EXCLUDE_MTP := true
 TW_SKIP_ADDITIONAL_FSTAB := true
+
+# opt in with CTWO_FBE_PROFILE=true
+ifeq ($(CTWO_FBE_PROFILE),true)
+TW_INCLUDE_CRYPTO := true
+endif
+
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/system_ext/private
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
