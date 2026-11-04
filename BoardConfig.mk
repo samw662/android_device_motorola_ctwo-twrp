@@ -50,6 +50,7 @@ TW_SKIP_ADDITIONAL_FSTAB := true
 # opt in with CTWO_FBE_PROFILE=true
 ifeq ($(CTWO_FBE_PROFILE),true)
 TW_INCLUDE_CRYPTO := true
+TW_USES_VENDOR_LIBS := true
 endif
 
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/system_ext/private
