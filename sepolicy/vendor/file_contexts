@@ -11,6 +11,7 @@
 /dev/spss_utils u:object_r:vendor_spss_utils_device:s0
 /dev/sp_keymaster u:object_r:vendor_sp_keymaster_device:s0
 /dev/sp_ssr u:object_r:vendor_sp_ssr_device:s0
+/dev/smcinvoke u:object_r:tee_device:s0
 /dev/dma_heap/qcom,qseecom u:object_r:vendor_dmabuf_qseecom_heap_device:s0
 /dev/dma_heap/qcom,qseecom-ta u:object_r:vendor_dmabuf_qseecom_ta_heap_device:s0
 /dev/dma_heap/qcom,secure-sp-tz u:object_r:vendor_dmabuf_secure_sp_tz_heap_device:s0
