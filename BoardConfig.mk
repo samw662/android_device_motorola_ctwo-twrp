@@ -62,6 +62,13 @@ TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 endif
 
+# opt in with CTWO_KEYMINT_VALIDATION=true
+ifeq ($(CTWO_KEYMINT_VALIDATION),true)
+TW_USES_VENDOR_LIBS := true
+TWRP_INCLUDE_LOGCAT := true
+TARGET_USES_LOGD := true
+endif
+
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/system_ext/private
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 

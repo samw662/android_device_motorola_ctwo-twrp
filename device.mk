@@ -79,6 +79,66 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libsqlite.so
 endif
 
+# opt in with CTWO_KEYMINT_VALIDATION=true
+ifeq ($(CTWO_KEYMINT_VALIDATION),true)
+ifeq ($(CTWO_KEYSTORE_VALIDATION),true)
+$(error CTWO_KEYMINT_VALIDATION cannot be combined with CTWO_KEYSTORE_VALIDATION)
+endif
+ifeq ($(CTWO_FBE_PROFILE),true)
+$(error CTWO_KEYMINT_VALIDATION cannot be combined with CTWO_FBE_PROFILE)
+endif
+ifneq ($(TW_INCLUDE_CRYPTO),)
+$(error CTWO_KEYMINT_VALIDATION requires TW_INCLUDE_CRYPTO to be unset)
+endif
+
+PRODUCT_COPY_FILES += \
+    system/core/libprocessgroup/profiles/task_profiles.json:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/task_profiles.json \
+    $(DEVICE_PATH)/recovery/root/init.recovery.task-profiles.rc:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/init/init.recovery.task-profiles.rc \
+    $(DEVICE_PATH)/recovery/root/system/etc/init/ctwo-keystore2.rc:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/init/ctwo-keystore2.rc
+
+TARGET_RECOVERY_DEVICE_MODULES += \
+    keystore2 \
+    android.system.keystore2-service.xml
+
+TW_RECOVERY_ADDITIONAL_RELINK_BINARY_FILES += \
+    $(TARGET_OUT_EXECUTABLES)/keystore2
+
+TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.confirmationui-V1-ndk.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.confirmationui@1.0.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@3.0.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.0.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.security.keymint-V3-ndk.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.security.rkp-V3-ndk.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.security.secureclock-V1-ndk.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.security.sharedsecret-V1-ndk.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.security.aaid_aidl-cpp.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.security.compat-ndk.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.system.keystore2-V4-ndk.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/lib_android_keymaster_keymint_utils.so \
+    $(TARGET_RECOVERY_ROOT_OUT)/system/lib64/libandroidicu.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libcppbor_external.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libcppcose_rkp.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4_1support.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster4support.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster_messages.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymaster_portable.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymint.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeymint_support.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeystore-attestation-application-id.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeystore2_aaid.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeystore2_apc_compat.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkeystore2_crypto.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkm_compat.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libkm_compat_service.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libpackagelistparser.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libpcre2.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libsoft_attestation_cert.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libsqlite.so
+endif
+
 TW_RECOVERY_ADDITIONAL_RELINK_BINARY_FILES += \
     $(TARGET_OUT_EXECUTABLES)/ctwo_weaver_hidl_bridge
 
