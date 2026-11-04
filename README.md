@@ -25,5 +25,5 @@ N/A
 ## How to build?
 - export ALLOW_MISSING_DEPENDENCIES=true
 - source build/envsetup.sh 
-- lunch twrp_ctwo-eng 
+- lunch twrp_ctwo-ap2a-eng
 - m recoveryimage -j$(nproc)

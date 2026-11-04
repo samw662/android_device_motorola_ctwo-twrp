@@ -4,4 +4,4 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/twrp_ctwo.mk
 
 COMMON_LUNCH_CHOICES := \
-    twrp_ctwo-eng
+    twrp_ctwo-ap2a-eng
