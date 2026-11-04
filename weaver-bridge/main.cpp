@@ -104,7 +104,7 @@ private:
 
 int main() {
   constexpr char kAidlService[] = "android.hardware.weaver.IWeaver/default";
-  ::ndk::SpAIBinder binder(AServiceManager_checkService(kAidlService));
+  ::ndk::SpAIBinder binder(AServiceManager_waitForService(kAidlService));
   if (!binder.get()) {
     std::fprintf(stderr,
                  "ctwo weaver bridge: AIDL Weaver service unavailable\n");
