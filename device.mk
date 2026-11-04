@@ -6,8 +6,10 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/recovery/root/init.recovery.qcom.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.qcom.rc \
     $(DEVICE_PATH)/recovery/root/init.recovery.security.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.security.rc \
     $(DEVICE_PATH)/recovery/root/system/etc/additional.fstab:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/additional.fstab \
-    $(DEVICE_PATH)/recovery/root/system/etc/vintf/manifest/ctwo-weaver.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/vintf/manifest/ctwo-weaver.xml \
-    $(DEVICE_PATH)/recovery/root/system/etc/vintf/manifest/ctwo-security.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/vintf/manifest/ctwo-security.xml \
+    $(DEVICE_PATH)/recovery/root/system/etc/vintf/manifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/vintf/manifest.xml \
+    $(DEVICE_PATH)/recovery/root/vendor/etc/vintf/manifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/vintf/manifest.xml \
+    $(DEVICE_PATH)/recovery/root/vendor/etc/vintf/manifest/ctwo-weaver.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/vintf/manifest/ctwo-weaver.xml \
+    $(DEVICE_PATH)/recovery/root/vendor/etc/vintf/manifest/ctwo-security.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/vintf/manifest/ctwo-security.xml \
     $(DEVICE_PATH)/recovery/root/vendor_dlkm/lib/modules/modules.dep:$(TARGET_COPY_OUT_RECOVERY)/root/vendor_dlkm/lib/modules/modules.dep
 
 PRODUCT_PACKAGES += \
