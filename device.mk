@@ -8,8 +8,7 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/recovery/root/system/etc/additional.fstab:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/additional.fstab \
     $(DEVICE_PATH)/recovery/root/system/etc/vintf/manifest/ctwo-weaver.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/vintf/manifest/ctwo-weaver.xml \
     $(DEVICE_PATH)/recovery/root/system/etc/vintf/manifest/ctwo-security.xml:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/vintf/manifest/ctwo-security.xml \
-    $(DEVICE_PATH)/recovery/root/vendor_dlkm/lib/modules/modules.dep:$(TARGET_COPY_OUT_RECOVERY)/root/vendor_dlkm/lib/modules/modules.dep \
-    $(DEVICE_PATH)/recovery/root/TWRP/.twrpcf:$(TARGET_COPY_OUT_RECOVERY)/root/TWRP/.twrpcf
+    $(DEVICE_PATH)/recovery/root/vendor_dlkm/lib/modules/modules.dep:$(TARGET_COPY_OUT_RECOVERY)/root/vendor_dlkm/lib/modules/modules.dep
 
 PRODUCT_PACKAGES += \
     ctwo_weaver_hidl_bridge \
