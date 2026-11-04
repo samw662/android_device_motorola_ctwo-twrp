@@ -56,6 +56,12 @@ TARGET_USERIMAGES_USE_F2FS := false
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fbe.fstab
 endif
 
+# capture Keystore2 startup failures in the isolated validation profile
+ifeq ($(CTWO_KEYSTORE_VALIDATION),true)
+TWRP_INCLUDE_LOGCAT := true
+TARGET_USES_LOGD := true
+endif
+
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/system_ext/private
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
