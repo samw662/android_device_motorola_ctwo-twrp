@@ -46,11 +46,14 @@ AB_OTA_PARTITIONS := \
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_EXCLUDE_MTP := true
 TW_SKIP_ADDITIONAL_FSTAB := true
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 
 # opt in with CTWO_FBE_PROFILE=true
 ifeq ($(CTWO_FBE_PROFILE),true)
 TW_INCLUDE_CRYPTO := true
 TW_USES_VENDOR_LIBS := true
+TARGET_USERIMAGES_USE_F2FS := false
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fbe.fstab
 endif
 
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/system_ext/private
@@ -58,7 +61,5 @@ BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
 DEVICE_RESOLUTION := 1220x2712
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
-
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 
 BUILD_BROKEN_PLUGIN_VALIDATION := soong-libaosprecovery_defaults soong-libguitwrp_defaults soong-libminuitwrp_defaults soong-vold_defaults
