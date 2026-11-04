@@ -1,1 +1,3 @@
 /dev/smcinvoke 0660 system drmrpc
+/dev/dma_heap/qcom,qseecom 0444 system system
+/dev/dma_heap/qcom,qseecom-ta 0444 system system
