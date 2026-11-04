@@ -31,6 +31,10 @@ ifneq ($(TW_INCLUDE_CRYPTO),)
 $(error CTWO_KEYSTORE_VALIDATION requires TW_INCLUDE_CRYPTO to be unset)
 endif
 
+PRODUCT_COPY_FILES += \
+    system/core/libprocessgroup/profiles/task_profiles.json:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/task_profiles.json \
+    $(DEVICE_PATH)/recovery/root/init.recovery.task-profiles.rc:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/init/init.recovery.task-profiles.rc
+
 TARGET_RECOVERY_DEVICE_MODULES += \
     keystore2 \
     android.system.keystore2-service.xml \
