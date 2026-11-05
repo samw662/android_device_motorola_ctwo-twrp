@@ -1,0 +1,16 @@
+type ctwo_binder_observer, domain, coredomain;
+type ctwo_binder_tools_dir, file_type, system_file_type;
+type ctwo_binder_observer_exec, exec_type, file_type, system_file_type;
+type ctwo_binder_service_exec, exec_type, file_type, system_file_type;
+init_daemon_domain(ctwo_binder_observer)
+binder_use(ctwo_binder_observer)
+write_logd(ctwo_binder_observer)
+hal_client_domain(ctwo_binder_observer, hal_keymint)
+hal_client_domain(ctwo_binder_observer, hal_qseecom)
+allow ctwo_binder_observer ctwo_binder_service_exec:file { getattr open read execute execute_no_trans map };
+allow ctwo_binder_observer ctwo_binder_tools_dir:dir search;
+allow init ctwo_binder_tools_dir:dir getattr;
+
+# The recovery CPIO labels regular ramdisk files as rootfs. Init reads this
+# loop backing image only; never grant write or relabel access to rootfs.
+allow init rootfs:file { getattr open read };

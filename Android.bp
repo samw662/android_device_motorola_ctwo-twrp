@@ -2,6 +2,10 @@ soong_namespace {
     imports: ["hardware/qcom-caf/bootctrl"],
 }
 
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
 cc_binary {
     name: "ctwo_weaver_hidl_bridge",
     srcs: ["weaver-bridge/main.cpp"],
@@ -12,4 +16,60 @@ cc_binary {
         "libhidlbase",
         "libutils",
     ],
+}
+
+cc_prebuilt_binary {
+    name: "ctwo_binder_observer_logwrapper",
+    srcs: [":logwrapper"],
+    stem: "ctwo-logwrapper",
+    relative_install_path: "ctwo-tools",
+    recovery: true,
+    installable: false,
+    shared_libs: [
+        "libcutils",
+        "liblog",
+    ],
+}
+
+cc_prebuilt_binary {
+    name: "ctwo_binder_observer_service",
+    srcs: [":service"],
+    stem: "ctwo-service",
+    relative_install_path: "ctwo-tools",
+    recovery: true,
+    installable: false,
+    shared_libs: [
+        "libbinder",
+        "libcutils",
+        "libutils",
+    ],
+}
+
+// Put the observer tools in a labeled, read-only filesystem.  The host mkfs
+// embeds security.selinux xattrs from the CTWO-specific file-contexts file.
+genrule {
+    name: "ctwo_binder_observer_erofs",
+    srcs: [
+        ":ctwo_binder_observer_logwrapper",
+        ":ctwo_binder_observer_service",
+    ],
+    tools: ["mkfs.erofs"],
+    tool_files: ["sepolicy/keymint_observer/erofs_file_contexts"],
+    recovery: true,
+    out: ["ctwo-binder-observer.erofs"],
+    cmd: "umask 022 && mkdir -p $(genDir)/observer && " +
+        "cp $(location :ctwo_binder_observer_logwrapper) $(genDir)/observer/ctwo-logwrapper && " +
+        "cp $(location :ctwo_binder_observer_service) $(genDir)/observer/ctwo-service && " +
+        "chmod 0755 $(genDir)/observer $(genDir)/observer/ctwo-logwrapper $(genDir)/observer/ctwo-service && " +
+        "SOURCE_DATE_EPOCH=0 $(location mkfs.erofs) --all-root -T 0 " +
+        "-U4354574f-4f42-5345-5256-4552494d4731 " +
+        "--file-contexts=$(location sepolicy/keymint_observer/erofs_file_contexts) " +
+        "--mount-point=system/bin/ctwo-tools $(out) $(genDir)/observer",
+}
+
+prebuilt_etc {
+    name: "ctwo_binder_observer_image",
+    src: ":ctwo_binder_observer_erofs",
+    filename: "ctwo-binder-observer.erofs",
+    recovery: true,
 }
