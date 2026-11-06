@@ -22,6 +22,9 @@ PRODUCT_PACKAGES += \
     ctwo_sensors_class \
     ctwo_panel_event_notifier
 
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/recovery/root/system/etc/init/zz_ctwo-servicemanager.rc:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/init/zz_ctwo-servicemanager.rc
+
 # enable only for VINTF and Keystore2 startup checks
 ifeq ($(CTWO_KEYSTORE_VALIDATION),true)
 ifeq ($(CTWO_FBE_PROFILE),true)
