@@ -1,0 +1,6 @@
+service hwservicemanager /system/bin/ctwo-hwsm/hwservicemanager
+    override
+    user root
+    group root
+    onrestart setprop hwservicemanager.ready false
+    disabled

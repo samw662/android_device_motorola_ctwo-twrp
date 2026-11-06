@@ -1,0 +1,2 @@
+on init
+    mount erofs loop@/system/etc/ctwo-hwservicemanager.erofs /system/bin/ctwo-hwsm ro nosuid nodev

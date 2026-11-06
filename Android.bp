@@ -73,3 +73,27 @@ prebuilt_etc {
     filename: "ctwo-binder-observer.erofs",
     recovery: true,
 }
+
+// Label the private executable at image creation for its init domain transition.
+genrule {
+    name: "ctwo_hwservicemanager_erofs",
+    srcs: [":hwservicemanager"],
+    tools: ["mkfs.erofs"],
+    tool_files: ["sepolicy/hwservicemanager/erofs_file_contexts"],
+    recovery: true,
+    out: ["ctwo-hwservicemanager.erofs"],
+    cmd: "umask 022 && mkdir -p $(genDir)/hwservicemanager && " +
+        "cp $(location :hwservicemanager) $(genDir)/hwservicemanager/hwservicemanager && " +
+        "chmod 0755 $(genDir)/hwservicemanager $(genDir)/hwservicemanager/hwservicemanager && " +
+        "SOURCE_DATE_EPOCH=0 $(location mkfs.erofs) --all-root -T 0 " +
+        "-U4354574f-4857-534d-4552-564943454d31 " +
+        "--file-contexts=$(location sepolicy/hwservicemanager/erofs_file_contexts) " +
+        "--mount-point=system/bin/ctwo-hwsm $(out) $(genDir)/hwservicemanager",
+}
+
+prebuilt_etc {
+    name: "ctwo_hwservicemanager_image",
+    src: ":ctwo_hwservicemanager_erofs",
+    filename: "ctwo-hwservicemanager.erofs",
+    recovery: true,
+}

@@ -1,0 +1,2 @@
+/system/bin/ctwo-hwsm(/)? -d u:object_r:ctwo_hwservicemanager_dir:s0
+/system/bin/ctwo-hwsm/hwservicemanager u:object_r:hwservicemanager_exec:s0

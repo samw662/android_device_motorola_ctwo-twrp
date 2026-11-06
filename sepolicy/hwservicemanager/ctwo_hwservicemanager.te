@@ -1,0 +1,7 @@
+type ctwo_hwservicemanager_dir, file_type, system_file_type;
+
+allow init ctwo_hwservicemanager_dir:dir { getattr search };
+
+allow init hwservicemanager:process2 nosuid_transition;
+allow hwservicemanager rootfs:dir { getattr open read search };
+allow hwservicemanager rootfs:file { getattr open read execute map };

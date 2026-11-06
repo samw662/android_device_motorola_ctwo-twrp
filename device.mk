@@ -23,7 +23,12 @@ PRODUCT_PACKAGES += \
     ctwo_panel_event_notifier
 
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/recovery/root/system/etc/init/zz_ctwo-servicemanager.rc:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/init/zz_ctwo-servicemanager.rc
+    $(DEVICE_PATH)/recovery/root/system/etc/init/zz_ctwo-servicemanager.rc:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/init/zz_ctwo-servicemanager.rc \
+    $(DEVICE_PATH)/recovery/root/system/etc/init/ctwo-hwservicemanager-mount.rc:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/init/ctwo-hwservicemanager-mount.rc \
+    $(DEVICE_PATH)/recovery/root/system/etc/init/zz_ctwo-hwservicemanager.rc:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/init/zz_ctwo-hwservicemanager.rc \
+    $(DEVICE_PATH)/recovery/root/system/bin/ctwo-hwsm/mountpoint:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/ctwo-hwsm/mountpoint
+
+TARGET_RECOVERY_DEVICE_MODULES += ctwo_hwservicemanager_image
 
 # enable only for VINTF and Keystore2 startup checks
 ifeq ($(CTWO_KEYSTORE_VALIDATION),true)
