@@ -11,4 +11,4 @@ LOCAL_PREBUILT_MODULE_FILE := $$(abspath $$(LOCAL_PATH)/../recovery/root/vendor_
 include $$(BUILD_PREBUILT)
 endef
 
-$(foreach module,goodix_brl_mmi mmi_info mmi_annotate touchscreen_mmi mmi_relay sensors_class panel_event_notifier,$(eval $(call ctwo_stock_module,$(module))))
+$(foreach module,goodix_brl_mmi mmi_info mmi_annotate touchscreen_mmi mmi_relay sensors_class panel_event_notifier snd_event_dlkm q6_pdr_dlkm q6_notifier_dlkm gpr_dlkm spf_core_dlkm adsp_loader_dlkm,$(eval $(call ctwo_stock_module,$(module))))

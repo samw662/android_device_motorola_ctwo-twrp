@@ -38,10 +38,28 @@ on init
     insmod /vendor_dlkm/lib/modules/touchscreen_mmi.ko
     insmod /vendor_dlkm/lib/modules/goodix_brl_mmi.ko
     wait /dev/input/event5 5
+    mount erofs loop@/system/etc/ctwo-adsp.erofs /ctwo-adsp ro nosuid nodev
+    insmod /vendor_dlkm/lib/modules/snd_event_dlkm.ko
+    insmod /vendor_dlkm/lib/modules/q6_pdr_dlkm.ko
+    insmod /vendor_dlkm/lib/modules/q6_notifier_dlkm.ko
+    insmod /vendor_dlkm/lib/modules/gpr_dlkm.ko
+    insmod /vendor_dlkm/lib/modules/spf_core_dlkm.ko
+    insmod /vendor_dlkm/lib/modules/adsp_loader_dlkm.ko
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    mount ext4 /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /vendor/firmware_mnt ro nosuid nodev wait noload,context=u:object_r:firmware_file:s0
+
+on early-boot
+    exec_start ctwo_adsp_start
+
+service ctwo_adsp_start /ctwo-adsp/ctwo_adsp_start ${ro.boot.slot_suffix}
+    class core
+    user root
+    group root
+    disabled
+    oneshot
 
 service ctwo_weaver_hidl_bridge /system/bin/ctwo_weaver_hidl_bridge
     class hal

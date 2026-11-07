@@ -10,7 +10,8 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/recovery/root/vendor/etc/vintf/manifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/vintf/manifest.xml \
     $(DEVICE_PATH)/recovery/root/vendor/etc/vintf/manifest/ctwo-weaver.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/vintf/manifest/ctwo-weaver.xml \
     $(DEVICE_PATH)/recovery/root/vendor/etc/vintf/manifest/ctwo-security.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/vintf/manifest/ctwo-security.xml \
-    $(DEVICE_PATH)/recovery/root/vendor_dlkm/lib/modules/modules.dep:$(TARGET_COPY_OUT_RECOVERY)/root/vendor_dlkm/lib/modules/modules.dep
+    $(DEVICE_PATH)/recovery/root/vendor_dlkm/lib/modules/modules.dep:$(TARGET_COPY_OUT_RECOVERY)/root/vendor_dlkm/lib/modules/modules.dep \
+    $(DEVICE_PATH)/recovery/root/vendor/firmware_mnt/mountpoint:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/firmware_mnt/mountpoint
 
 PRODUCT_PACKAGES += \
     ctwo_weaver_hidl_bridge \
@@ -20,7 +21,13 @@ PRODUCT_PACKAGES += \
     ctwo_touchscreen_mmi \
     ctwo_mmi_relay \
     ctwo_sensors_class \
-    ctwo_panel_event_notifier
+    ctwo_panel_event_notifier \
+    ctwo_snd_event_dlkm \
+    ctwo_q6_pdr_dlkm \
+    ctwo_q6_notifier_dlkm \
+    ctwo_gpr_dlkm \
+    ctwo_spf_core_dlkm \
+    ctwo_adsp_loader_dlkm
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/recovery/root/system/etc/init/zz_ctwo-servicemanager.rc:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/init/zz_ctwo-servicemanager.rc \
@@ -29,6 +36,11 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/recovery/root/system/bin/ctwo-hwsm/mountpoint:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/ctwo-hwsm/mountpoint
 
 TARGET_RECOVERY_DEVICE_MODULES += ctwo_hwservicemanager_image
+
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/recovery/root/ctwo-adsp/mountpoint:$(TARGET_COPY_OUT_RECOVERY)/root/ctwo-adsp/mountpoint
+
+TARGET_RECOVERY_DEVICE_MODULES += ctwo_adsp_image
 
 # enable only for VINTF and Keystore2 startup checks
 ifeq ($(CTWO_KEYSTORE_VALIDATION),true)

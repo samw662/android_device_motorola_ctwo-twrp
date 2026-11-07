@@ -1,0 +1,2 @@
+/ctwo-adsp(/)? -d u:object_r:ctwo_adsp_dir:s0
+/ctwo-adsp/ctwo_adsp_start u:object_r:ctwo_adsp_start_exec:s0

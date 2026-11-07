@@ -1,0 +1,26 @@
+type firmware_file, file_type, vendor_file_type, contextmount_type;
+type vendor_sysfs_boot_adsp, fs_type, sysfs_type;
+type vendor_sysfs_adsp_remoteproc, fs_type, sysfs_type;
+
+type ctwo_adsp_start, domain;
+type ctwo_adsp_start_exec, exec_type, file_type, vendor_file_type;
+type ctwo_adsp_dir, file_type, vendor_file_type;
+init_daemon_domain(ctwo_adsp_start)
+
+allow init ctwo_adsp_dir:dir { getattr search };
+allow init ctwo_adsp_start:process2 nosuid_transition;
+allow init rootfs:file { getattr open read };
+allow ctwo_adsp_start ctwo_adsp_dir:dir { getattr search };
+
+allow init firmware_file:filesystem { mount relabelfrom getattr };
+allow firmware_file self:filesystem associate;
+allow kernel firmware_file:dir r_dir_perms;
+allow kernel firmware_file:file r_file_perms;
+allow ueventd firmware_file:dir search;
+allow ueventd firmware_file:file r_file_perms;
+
+allow ctwo_adsp_start firmware_file:filesystem getattr;
+allow ctwo_adsp_start firmware_file:dir { getattr search };
+allow ctwo_adsp_start firmware_file:file { getattr open read };
+allow ctwo_adsp_start vendor_sysfs_adsp_remoteproc:file { getattr open read };
+allow ctwo_adsp_start vendor_sysfs_boot_adsp:file { getattr open write };

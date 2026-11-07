@@ -97,3 +97,38 @@ prebuilt_etc {
     filename: "ctwo-hwservicemanager.erofs",
     recovery: true,
 }
+
+cc_binary {
+    name: "ctwo_adsp_start",
+    srcs: ["adsp-start/main.c"],
+    static_executable: true,
+    recovery: true,
+    installable: false,
+}
+
+genrule {
+    name: "ctwo_adsp_erofs",
+    srcs: [":ctwo_adsp_start"],
+    tools: ["mkfs.erofs"],
+    tool_files: [
+        "sepolicy/vendor/ctwo_adsp_erofs_file_contexts",
+        "adsp-start/fs_config",
+    ],
+    recovery: true,
+    out: ["ctwo-adsp.erofs"],
+    cmd: "umask 022 && mkdir -p $(genDir)/adsp && " +
+        "cp $(location :ctwo_adsp_start) $(genDir)/adsp/ctwo_adsp_start && " +
+        "chmod 0755 $(genDir)/adsp $(genDir)/adsp/ctwo_adsp_start && " +
+        "SOURCE_DATE_EPOCH=0 $(location mkfs.erofs) --all-root -T 0 " +
+        "-U4354574f-4144-5350-5354-415254455230 " +
+        "--fs-config-file=$(location adsp-start/fs_config) " +
+        "--file-contexts=$(location sepolicy/vendor/ctwo_adsp_erofs_file_contexts) " +
+        "--mount-point=ctwo-adsp $(out) $(genDir)/adsp",
+}
+
+prebuilt_etc {
+    name: "ctwo_adsp_image",
+    src: ":ctwo_adsp_erofs",
+    filename: "ctwo-adsp.erofs",
+    recovery: true,
+}
