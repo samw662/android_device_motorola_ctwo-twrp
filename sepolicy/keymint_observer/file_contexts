@@ -1,2 +1,1 @@
-/system/bin/ctwo-tools/ctwo-logwrapper u:object_r:ctwo_binder_observer_exec:s0
-/system/bin/ctwo-tools/ctwo-service u:object_r:ctwo_binder_service_exec:s0
+/system/bin/ctwo-tools/ctwo-binder-observer u:object_r:ctwo_binder_observer_exec:s0

@@ -111,7 +111,6 @@ ifneq ($(TW_INCLUDE_CRYPTO),)
 $(error CTWO_KEYMINT_VALIDATION requires TW_INCLUDE_CRYPTO to be unset)
 endif
 
-# Keep dedicated labels on private copies, not shared /system/bin utilities.
 # Precreate the mountpoint in the ramdisk; init must not mkdir under system_file.
 PRODUCT_COPY_FILES += \
     system/core/libprocessgroup/profiles/task_profiles.json:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/task_profiles.json \

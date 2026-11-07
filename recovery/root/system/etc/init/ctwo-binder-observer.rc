@@ -1,32 +1,35 @@
-# Operator-triggered, read-only Binder registration checks.
-# These commands use IServiceManager::checkService and do not start lazy services.
+# Operator-triggered Binder registration checks.
 on init
     mount erofs loop@/system/etc/ctwo-binder-observer.erofs /system/bin/ctwo-tools ro nosuid nodev
 
-service ctwo_binder_check_keymint /system/bin/ctwo-tools/ctwo-logwrapper /system/bin/ctwo-tools/ctwo-service check android.hardware.security.keymint.IKeyMintDevice/default
+service ctwo_binder_check_keymint /system/bin/ctwo-tools/ctwo-binder-observer android.hardware.security.keymint.IKeyMintDevice/default
     class core
-    user root
-    group root
+    user system
+    group system
     disabled
     oneshot
+    timeout_period 10
 
-service ctwo_binder_check_sharedsecret /system/bin/ctwo-tools/ctwo-logwrapper /system/bin/ctwo-tools/ctwo-service check android.hardware.security.sharedsecret.ISharedSecret/default
+service ctwo_binder_check_sharedsecret /system/bin/ctwo-tools/ctwo-binder-observer android.hardware.security.sharedsecret.ISharedSecret/default
     class core
-    user root
-    group root
+    user system
+    group system
     disabled
     oneshot
+    timeout_period 10
 
-service ctwo_binder_check_secureclock /system/bin/ctwo-tools/ctwo-logwrapper /system/bin/ctwo-tools/ctwo-service check android.hardware.security.secureclock.ISecureClock/default
+service ctwo_binder_check_secureclock /system/bin/ctwo-tools/ctwo-binder-observer android.hardware.security.secureclock.ISecureClock/default
     class core
-    user root
-    group root
+    user system
+    group system
     disabled
     oneshot
+    timeout_period 10
 
-service ctwo_binder_check_qseecom /system/bin/ctwo-tools/ctwo-logwrapper /system/bin/ctwo-tools/ctwo-service check vendor.qti.hardware.qseecom.IQSEECom/default
+service ctwo_binder_check_qseecom /system/bin/ctwo-tools/ctwo-binder-observer vendor.qti.hardware.qseecom.IQSEECom/default
     class core
-    user root
-    group root
+    user system
+    group system
     disabled
     oneshot
+    timeout_period 10
